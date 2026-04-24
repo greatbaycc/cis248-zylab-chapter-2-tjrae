@@ -4,65 +4,91 @@ public class FancyCar {
 
     // Declare private fields
     private final int FULL_TANK = 14;
+    private String model;
+    private int milesDriven;
+    private double gasTank;
+    private double MPG;
+    private boolean engineOn;
+
 
     // Default constructor
     public FancyCar() {
-        /* Complete the method */
+        milesDriven = 5;
+        gasTank = FULL_TANK;
+        model = "Old Clunker";
+        MPG = 24;
+        engineOn = false;
     }
 
     // Constructor (String make, double mpg)
     public FancyCar(String make, double mpg) {
-        /* Complete the method */
+        this();
+        model = make;
+        MPG = mpg;
     }
 
     // Return car model
     public String getModel() {
-        /* Update the return statment */
-        return "";
+        return model;
     }
 
     // Return miles per gallon (MPG)
     public double getMPG() {
-        /* Update the return statment */
-        return 0.0;
+        return MPG;
     }
 
     // Return miles on odometer
     public int checkOdometer() {
-        /* Update the return statment */
-        return 0;
+        return milesDriven;
     }
 
     // Return amount of gas in tank
     public double checkGasGauge() {
-        /* Update the return statment */
-        return 0.0;
+        return gasTank;
     }
 
     // Honk horn
     public void honkHorn() {
-        /* Complete the method */
+        System.out.println("The " + model + " says beep beep!");
     }
 
     // Drive car requested miles but check for enough
     // gas and check for positive value
     public void drive(int milesToDrive) {
-        /* Complete the method */
+        if (milesToDrive <= 0 || !engineOn) {
+            return;
+        }
+        double gasNeeded = milesToDrive / MPG;
+        if (gasNeeded < gasTank) {
+            milesDriven += milesToDrive;
+            gasTank -= gasNeeded;
+        } else {
+            int distance = (int) (gasTank * MPG);
+            milesDriven += distance;
+            gasTank = 0;
+            engineOn = false;
+        }
     }
 
     // Add gas to tank. Check for positive value.
     public void addGas(double amtToAdd) {
-        /* Complete the method */
+        if (amtToAdd <= 0 || engineOn) {
+            return;
+        }
+        gasTank += amtToAdd;
+        if (gasTank > FULL_TANK) {
+            gasTank = FULL_TANK;
+        }
     }
 
     // Set boolean variable to true
     public void startEngine() {
-        /* Complete the method */
+        engineOn = true;
     }
 
     // Set boolean variable to false
     public void stopEngine() {
-        /* Complete the method */
+        engineOn = false;
     }
 
 }
