@@ -25,43 +25,97 @@ public class LabProgram {
 
     // Find high score
     public static int findHighScore(int[] dice) {
-        /* Complete the method and update the return statement */
-        return -1;
+        int score = 0;
+        int highScore = 0;
+        score = checkThreeOfKind(dice);
+        if (score > highScore) {
+            highScore = score;
+        }
+        score = checkFourOfKind(dice);
+        if (score > highScore) {
+            highScore = score;
+        }
+        score = checkFiveOfKind(dice);
+        if (score > highScore) {
+            highScore = score;
+        }
+        score = checkFullHouse(dice);
+        if (score > highScore) {
+            highScore = score;
+        }
+        for (int i = 1; i < dice.length - 1; ++i) {
+            score = checkSingles(dice, i);
+            if (score > highScore) {
+                highScore = score;
+            }
+        }
+        score = checkStraight(dice);
+        if (score > highScore) {
+            highScore = score;
+        }
+        return highScore;
     }
 
-    // Add all occurences of goal value
+    // Add all occurrences of goal value
     public static int checkSingles(int[] dice, int goal) {
-        /* Complete the method and update the return statement */
-        return -1;
+        int score = 0;
+
+        for (int die : dice) {
+            if (die == goal) {
+                score += goal;
+            }
+        }
+
+        return score;
     }
 
     // Check for three of a kind (score = 30)
     public static int checkThreeOfKind(int[] dice) {
-        /* Complete the method and update the return statement */
-        return -1;
+        int score = 0;
+        if (dice[0] == dice[2] || dice[1] == dice[2] || dice[2] == dice[4]) {
+            score = 30;
+        }
+        return score;
     }
 
     // Check for four of a kind (score = 40)
     public static int checkFourOfKind(int[] dice) {
-        /* Complete the method and update the return statement */
-        return -1;
+        int score = 0;
+        if (dice[0] == dice[3] || dice[1] == dice[4]) {
+            score = 40;
+        }
+        return score;
     }
 
     // Check for five of a kind (score = 50)
     public static int checkFiveOfKind(int[] dice) {
-        /* Complete the method and update the return statement */
-        return -1;
+        int score = 0;
+        if (dice[0] == dice[4]) {
+            score = 50;
+        }
+        return score;
     }
 
     // Check for full house (score = 35)
     public static int checkFullHouse(int[] dice) {
-        /* Complete the method and update the return statement */
-        return -1;
+        int score = 0;
+        if (dice[0] == dice[1] && dice[2] == dice[4]) {
+            score = 35;
+        }
+        if (dice[0] == dice[2] && dice[3] == dice[4]) {
+            score = 35;
+        }
+        return score;
     }
 
     // Check for straight (score = 45)
     public static int checkStraight(int[] dice) {
-        /* Complete the method and update the return statement */
-        return -1;
+        int score = 45;
+        for (int i = 0; i < dice.length - 1; ++i) {
+            if (dice[i] + 1 != dice[i + 1]) {
+                return 0;
+            }
+        }
+        return score;
     }
 }
