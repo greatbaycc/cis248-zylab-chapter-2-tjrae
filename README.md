@@ -1,14 +1,9 @@
-# CIS248 zyLAB Chapter 2 - Classes and Methods in Depth
-## Spring 2026 #
+# Chapter 4 zyLabs
 
-- Name:
-- Date:
+## Description
+This repository contains my solutions for zyLabs 4.8–4.10 in Chapter 4. The programs demonstrate the concepts and requirements covered by those assignments.
 
-
-- zyLAB Challenges to be completed:
-  - 2.31 - Income tax form
-  - 2.32 - Poker dice game
-  - 2.33 - Fancy car
-  - 2.34 - Self pay kiosk
-
-
+## Contents
+- zyLab 4.8
+- zyLab 4.9
+- zyLab 4.10
